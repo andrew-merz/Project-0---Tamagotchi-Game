@@ -11,8 +11,8 @@ let startBtn = document.querySelector(".start");
 
 //Starting Status
 let hungerStatus = 10;
-let lightStatus = 15;
-let boredStatus = 8;
+let lightStatus = 10;
+let boredStatus = 10;
 let ageStatus = 1;
 
 function feedMe() {
@@ -20,8 +20,9 @@ function feedMe() {
     const foodTimer = setInterval(() => {
       hunger.innerHTML = `Hunger: ${hungerStatus--}`;
     }, 2000);
-  } else if (hungerStatus === 0) {
-    hunger.innerHTML = `Hunger: 0`;
+  }
+  if (hungerStatus === 0) {
+    hunger.innerHTML = `You Lost!`;
   }
 }
 
@@ -39,7 +40,7 @@ function playWith() {
   if (boredStatus > 0) {
     const playTimer = setInterval(() => {
       boredom.innerHTML = `Boredom: ${boredStatus--}`;
-    }, 1000);
+    }, 2000);
   } else if (hungerStatus === 0) {
     hunger.innerHTML = `Hunger: 0`;
   }
@@ -56,4 +57,14 @@ startBtn.addEventListener("click", () => {
   playWith();
   lightSwitch();
   aging();
+});
+
+feedBtn.addEventListener("click", () => {
+  hungerStatus = 10;
+});
+lightBtn.addEventListener("click", () => {
+  lightStatus = 10;
+});
+boredBtn.addEventListener("click", () => {
+  boredStatus = 10;
 });
