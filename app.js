@@ -17,33 +17,24 @@ let ageStatus = 1;
 
 function feedMe() {
   if (hungerStatus > 0) {
-    const foodTimer = setInterval(() => {
+    setInterval(() => {
       hunger.innerHTML = `Hunger: ${hungerStatus--}`;
     }, 2000);
-  }
-  if (hungerStatus === 0) {
-    hunger.innerHTML = `You Lost!`;
-  }
-}
-
-function lightSwitch() {
-  if (lightStatus > 0) {
-    const sleepTimer = setInterval(() => {
-      sleepiness.innerHTML = `Sleepiness: ${lightStatus--}`;
-    }, 2000);
-  } else if (hungerStatus === 0) {
-    hunger.innerHTML = `Hunger: 0`;
+  } else {
+    console.log("You Lost");
   }
 }
 
 function playWith() {
-  if (boredStatus > 0) {
-    const playTimer = setInterval(() => {
-      boredom.innerHTML = `Boredom: ${boredStatus--}`;
-    }, 2000);
-  } else if (hungerStatus === 0) {
-    hunger.innerHTML = `Hunger: 0`;
-  }
+  const playTimer = setInterval(() => {
+    boredom.innerHTML = `Boredom: ${boredStatus--}`;
+  }, 2000);
+}
+
+function lightSwitch() {
+  const sleepTimer = setInterval(() => {
+    sleepiness.innerHTML = `Sleepiness: ${lightStatus--}`;
+  }, 2000);
 }
 
 function aging() {
@@ -62,7 +53,7 @@ startBtn.addEventListener("click", () => {
 feedBtn.addEventListener("click", () => {
   hungerStatus = 10;
 });
-lightBtn.addEventListener("click", () => {
+sleepBtn.addEventListener("click", () => {
   lightStatus = 10;
 });
 boredBtn.addEventListener("click", () => {
